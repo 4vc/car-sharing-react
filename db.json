@@ -1,0 +1,91 @@
+{
+  "user-role": [
+    {
+      "id": 1,
+      "role": "ADMIN"
+    },
+    {
+      "id": 2,
+      "role": "USER"
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "type": "A"
+    },
+    {
+      "id": 2,
+      "type": "A1"
+    },
+    {
+      "id": 3,
+      "type": "B"
+    },
+    {
+      "id": 4,
+      "type": "B1"
+    }
+  ],
+  "statuses": [
+    {
+      "id": 1,
+      "name": "In the process"
+    },
+    {
+      "id": 2,
+      "name": "Confirmed"
+    },
+    {
+      "id": 3,
+      "name": "Rejected"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "firstName": "Admin",
+      "lastName": "Admin",
+      "email": "admin@gmail.com",
+      "idRole": 1
+    },
+    {
+      "id": 2,
+      "firstName": "John",
+      "lastName": "Smith",
+      "email": "john.smith@gmail.com",
+      "idRole": 2
+    }
+  ],
+  "cars": [
+    {
+      "id": 1,
+      "brand": "Chevrolet",
+      "model": "Camaro",
+      "year": "2020",
+      "price": 100.0,
+      "idCategory": 3,
+      "plate": "CA1234CA",
+      "available": true,
+      "image": ""
+    }
+  ],
+  "client-category": [
+    {
+      "idClient": 1,
+      "idCategory": 3
+    }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "idCar": 1,
+      "idClient": 1,
+      "rentTerm": 7,
+      "amountPrice": 700.0,
+      "rentalDate": "2023-05-16",
+      "returnDate": "2023-05-16",
+      "idStatus": 1
+    }
+  ]
+}

@@ -1,15 +1,15 @@
 {
-  "user-role": [
+  "role": [
     {
       "id": 1,
-      "role": "ADMIN"
+      "name": "ROLE_ADMIN"
     },
     {
       "id": 2,
-      "role": "USER"
+      "name": "ROLE_USER"
     }
   ],
-  "categories": [
+  "category": [
     {
       "id": 1,
       "type": "A"
@@ -27,10 +27,10 @@
       "type": "B1"
     }
   ],
-  "statuses": [
+  "status": [
     {
       "id": 1,
-      "name": "In the process"
+      "name": "In the Process"
     },
     {
       "id": 2,
@@ -41,7 +41,7 @@
       "name": "Rejected"
     }
   ],
-  "users": [
+  "user": [
     {
       "id": 1,
       "firstName": "Admin",
@@ -57,7 +57,7 @@
       "idRole": 2
     }
   ],
-  "cars": [
+  "car": [
     {
       "id": 1,
       "brand": "Chevrolet",
@@ -66,17 +66,17 @@
       "price": 100.0,
       "idCategory": 3,
       "plate": "CA1234CA",
-      "available": true,
+      "available": 1,
       "image": ""
     }
   ],
   "client-category": [
     {
-      "idClient": 1,
+      "idClient": 2,
       "idCategory": 3
     }
   ],
-  "orders": [
+  "order": [
     {
       "id": 1,
       "idCar": 1,

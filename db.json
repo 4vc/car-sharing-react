@@ -67,7 +67,19 @@
       "idCategory": 3,
       "plate": "CA1234CA",
       "available": 1,
-      "image": ""
+      "image": "https://imgpng.ru/d/camaro_PNG19.png"
+    },
+    
+    {
+      "id": 2,
+      "brand": "Ford",
+      "model": "Transit",
+      "year": "2010",
+      "price": 120.0,
+      "idCategory": 4,
+      "plate": "AC4321AC",
+      "available": 1,
+      "image": "https://file1.removal.ai/preview/1767f6ce-7f1c-41af-a241-bfb743c693b5.png"
     }
   ],
   "clients-categories": [

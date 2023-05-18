@@ -1,5 +1,5 @@
 {
-  "role": [
+  "roles": [
     {
       "id": 1,
       "name": "ROLE_ADMIN"
@@ -9,7 +9,7 @@
       "name": "ROLE_USER"
     }
   ],
-  "category": [
+  "categories": [
     {
       "id": 1,
       "type": "A"
@@ -27,7 +27,7 @@
       "type": "B1"
     }
   ],
-  "status": [
+  "statuses": [
     {
       "id": 1,
       "name": "In the Process"
@@ -41,7 +41,7 @@
       "name": "Rejected"
     }
   ],
-  "user": [
+  "users": [
     {
       "id": 1,
       "firstName": "Admin",
@@ -57,7 +57,7 @@
       "idRole": 2
     }
   ],
-  "car": [
+  "cars": [
     {
       "id": 1,
       "brand": "Chevrolet",
@@ -70,13 +70,13 @@
       "image": ""
     }
   ],
-  "client-category": [
+  "clients-categories": [
     {
       "idClient": 2,
       "idCategory": 3
     }
   ],
-  "order": [
+  "orders": [
     {
       "id": 1,
       "idCar": 1,

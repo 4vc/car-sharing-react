@@ -23,7 +23,7 @@ const Header = ({idOfLoggedUser}) => {
         <div className={styles.user}>
           {user && (
             <React.Fragment>
-              <a href={'#'} className={styles.name}><i
+              <a href={'#'}><i
                 className="fa-solid fa-user"></i> {`${user.firstName} ${user.lastName}`}</a>
             </React.Fragment>
           )}

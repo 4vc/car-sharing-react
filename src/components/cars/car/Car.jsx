@@ -1,9 +1,9 @@
 import {useEffect, useState} from 'react';
+import PropTypes from 'prop-types';
 import axios from 'axios';
 import styles from './Car.module.css';
-import PropTypes from "prop-types";
 
-const Car = ({id, onCarPrice}) => {
+const Car = ({id, onCarPrice = () => {}}) => {
   const [car, setCar] = useState(null);
   const [category, setCategory] = useState(null);
 
@@ -37,7 +37,7 @@ const Car = ({id, onCarPrice}) => {
   return (
     <div>
       {car && (
-        <div key={car.id} className={styles.item}>
+        <div className={styles.item}>
           <div className={styles.info}>
             <p className={styles.year}>{car.year}</p>
             <p className={styles.brand}>{car.brand}</p>

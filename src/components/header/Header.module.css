@@ -1,0 +1,26 @@
+.logo {
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    font-size: 32px;
+    color: #E93560;
+}
+
+.navbar {
+    height: 124px;
+    border-bottom: 1px solid #C3D4E9;
+    padding: 1.25em;
+}
+
+.user {
+    float: right;
+}
+
+.user a {
+    color: #EB5757;
+    text-decoration: none;
+}
+
+.user a:hover {
+    color: #af3131;
+    text-decoration: none;
+}

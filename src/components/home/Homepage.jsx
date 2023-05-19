@@ -30,10 +30,10 @@ const Homepage = () => {
       <div>
         {carList.map(car => (
           <div key={car.id} className={styles.item}>
-            <div className={styles.info}>
-            <p className={styles.caryear}>{car.year}</p>
-              <p className={styles.carbrand}>{car.brand}</p>
-              <p className={styles.carmodel}>{car.model}</p>
+            <div>
+              <p className={styles.year}>{car.year}</p>
+              <p className={styles.brand}>{car.brand}</p>
+              <p className={styles.model}>{car.model}</p>
               <div
               className={styles.image}
               style={{
@@ -51,7 +51,7 @@ const Homepage = () => {
               </div>
               </div>
               <div className={styles.buy}>
-              <div className={styles.rentprice}>
+              <div className={styles.price}>
                 {new Intl.NumberFormat('en-US', {
                   style: 'currency',
                   currency: 'USD',

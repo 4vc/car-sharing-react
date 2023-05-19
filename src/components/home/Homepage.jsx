@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styles from './Homepage.module.css';
+import Header from '../header/Header.jsx';
 
 const Homepage = () => {
   const [carList, setCarList] = useState([]);
@@ -11,7 +12,6 @@ const Homepage = () => {
       .then(response => {
         const data = response.data;
         setCarList(data.cars);
-        setUser(data.users[1]);
       })
       .catch(error => {
         console.error('Error fetching car data:', error);
@@ -20,20 +20,7 @@ const Homepage = () => {
 
   return (
     <div>
-      <nav className={styles.navbar}>
-        <div className={styles.user}>
-          {user && (
-            <React.Fragment>
-              <a href={'#'} className={styles.name}><i className="fa-solid fa-user"></i> {`${user.firstName} ${user.lastName}`}</a>
-            </React.Fragment>
-          )}
-        </div>
-        
-<div className={styles.logo}>
-  <p>CAR</p> 
-  <p>SHARING</p>
-  </div>
-      </nav>
+      <Header idOfLoggedUser={1}/>
       <div className={styles.header}>AVAILABLE CARS</div>
       <div className={styles.content}>
       <div>

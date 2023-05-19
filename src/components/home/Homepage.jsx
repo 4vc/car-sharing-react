@@ -2,10 +2,14 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styles from './Homepage.module.css';
 import Header from '../header/Header.jsx';
+import Button from '../button/Button.jsx';
 
 const Homepage = () => {
   const [carList, setCarList] = useState([]);
-  const [user, setUser] = useState(null);
+
+  const handleButtonClick = () => {
+    window.location.href = '/order';
+  };
 
   useEffect(() => {
     axios.get('db.json')
@@ -53,9 +57,7 @@ const Homepage = () => {
                   currency: 'USD',
                 }).format(car.price)}/<span className={styles.day}> DAY</span>
               </div>
-              <button className={styles.rentbutton}>
-              Rent now
-              </button>
+                <Button text={'Rent Now'} onClick={handleButtonClick}/>
               </div>
           </div>
           </div>

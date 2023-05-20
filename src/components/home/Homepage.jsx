@@ -3,9 +3,11 @@ import styles from './Homepage.module.css';
 import Header from '../header/Header.jsx';
 import Button from '../button/Button.jsx';
 import carService from '../../services/CarService.js';
+import categoryService from '../../services/CategoryService.js';
 
 const Homepage = () => {
   const [cars, setCars] = useState([]);
+  const [categories, setCategories] = useState([]);
 
   const handleButtonClick = () => {
     window.location.href = '/order';
@@ -18,6 +20,16 @@ const Homepage = () => {
       })
       .catch(error => {
         console.error('Error fetching cars data:', error);
+      });
+  }, []);
+
+  useEffect(() => {
+    categoryService.getAll()
+      .then(categoriesResponse => {
+        setCategories(categoriesResponse.data);
+      })
+      .catch(error => {
+        console.error('Error fetching categories data:', error);
       });
   }, []);
 
@@ -46,7 +58,7 @@ const Homepage = () => {
                   </div>
                   <div className={styles.category}>
                     <p>Category:</p>
-                    <p>{car.idCategory}</p>
+                    <p>{categories[car.idCategory - 1].name}</p>
                   </div>
                 </div>
                 <div className={styles.buy}>

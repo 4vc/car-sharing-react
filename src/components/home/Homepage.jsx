@@ -1,34 +1,45 @@
 import {useEffect, useState} from 'react';
-import axios from 'axios';
 import styles from './Homepage.module.css';
 import Header from '../header/Header.jsx';
 import Button from '../button/Button.jsx';
+import carService from '../../services/CarService.js';
+import categoryService from '../../services/CategoryService.js';
 
 const Homepage = () => {
-  const [carList, setCarList] = useState([]);
+  const [cars, setCars] = useState([]);
+  const [categories, setCategories] = useState([]);
 
   const handleButtonClick = () => {
     window.location.href = '/order';
   };
 
   useEffect(() => {
-    axios.get('db.json')
-      .then(response => {
-        const data = response.data;
-        setCarList(data.cars);
+    carService.getAll()
+      .then(carsResponse => {
+        setCars(carsResponse.data);
       })
       .catch(error => {
-        console.error('Error fetching car data:', error);
+        console.error('Error fetching cars data:', error);
+      });
+  }, []);
+
+  useEffect(() => {
+    categoryService.getAll()
+      .then(categoriesResponse => {
+        setCategories(categoriesResponse.data);
+      })
+      .catch(error => {
+        console.error('Error fetching categories data:', error);
       });
   }, []);
 
   return (
     <div>
-      <Header idOfLoggedUser={1}/>
+      <Header idOfLoggedUser={2}/>
       <div className={styles.header}>AVAILABLE CARS</div>
       <div className={styles.content}>
         <div>
-          {carList.map(car => (
+          {cars.map(car => (
             <div key={car.id} className={styles.item}>
               <div>
                 <p className={styles.year}>{car.year}</p>
@@ -47,7 +58,7 @@ const Homepage = () => {
                   </div>
                   <div className={styles.category}>
                     <p>Category:</p>
-                    <p>{car.idCategory}</p>
+                    <p>{categories[car.idCategory - 1].name}</p>
                   </div>
                 </div>
                 <div className={styles.buy}>
@@ -55,7 +66,7 @@ const Homepage = () => {
                     {new Intl.NumberFormat('en-US', {
                       style: 'currency',
                       currency: 'USD',
-                    }).format(car.price)}/<span className={styles.day}> DAY</span>
+                    }).format(car.price)}/<span> HOUR</span>
                   </div>
                   <Button text={'Rent Now'} onClick={handleButtonClick}/>
                 </div>

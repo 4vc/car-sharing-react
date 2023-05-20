@@ -1,20 +1,20 @@
 import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
-import axios from 'axios';
 import styles from './Header.module.css';
+import userService from '../../services/UserService.js';
 
 const Header = ({idOfLoggedUser}) => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    axios.get('db.json')
-      .then(response => {
-        const data = response.data;
-        setUser(data.users[idOfLoggedUser]);
-      })
-      .catch(error => {
-        console.error('Error fetching user data:', error);
-      });
+    userService.getById(idOfLoggedUser).then(
+
+      userResponse => {
+        setUser(userResponse.data);
+      }
+    ).catch(error => {
+      console.error('Error fetching user data:', error);
+    });
   }, [idOfLoggedUser]);
 
   return (

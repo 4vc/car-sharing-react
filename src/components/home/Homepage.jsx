@@ -1,24 +1,23 @@
 import {useEffect, useState} from 'react';
-import axios from 'axios';
 import styles from './Homepage.module.css';
 import Header from '../header/Header.jsx';
 import Button from '../button/Button.jsx';
+import carService from '../../services/CarService.js';
 
 const Homepage = () => {
-  const [carList, setCarList] = useState([]);
+  const [cars, setCars] = useState([]);
 
   const handleButtonClick = () => {
     window.location.href = '/order';
   };
 
   useEffect(() => {
-    axios.get('db.json')
-      .then(response => {
-        const data = response.data;
-        setCarList(data.cars);
+    carService.getAll()
+      .then(carsResponse => {
+        setCars(carsResponse.data);
       })
       .catch(error => {
-        console.error('Error fetching car data:', error);
+        console.error('Error fetching cars data:', error);
       });
   }, []);
 
@@ -28,7 +27,7 @@ const Homepage = () => {
       <div className={styles.header}>AVAILABLE CARS</div>
       <div className={styles.content}>
         <div>
-          {carList.map(car => (
+          {cars.map(car => (
             <div key={car.id} className={styles.item}>
               <div>
                 <p className={styles.year}>{car.year}</p>

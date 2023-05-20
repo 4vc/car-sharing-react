@@ -12,19 +12,19 @@
   "categories": [
     {
       "id": 1,
-      "type": "A"
+      "name": "A"
     },
     {
       "id": 2,
-      "type": "A1"
+      "name": "A1"
     },
     {
       "id": 3,
-      "type": "B"
+      "name": "B"
     },
     {
       "id": 4,
-      "type": "B1"
+      "name": "B1"
     }
   ],
   "statuses": [
@@ -76,7 +76,7 @@
       "model": "Transit",
       "year": "2010",
       "price": 12.0,
-      "idCategory": 4,
+      "idCategory": 3,
       "plate": "AC4321AC",
       "available": 1,
       "image": "https://file1.removal.ai/preview/1767f6ce-7f1c-41af-a241-bfb743c693b5.png"

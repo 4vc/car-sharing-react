@@ -64,7 +64,7 @@ const Order = () => {
 
   return (
     <div>
-      <Header idOfLoggedUser={1}/>
+      <Header idOfLoggedUser={2}/>
       <div className={styles.header}>ORDER</div>
       <div className={styles.container}>
         <div className={styles.container}>
@@ -81,7 +81,7 @@ const Order = () => {
         </div>
         <div className={styles.car}>
           <div className={styles.summary}>Rental Summary</div>
-          <Car id={0} onCarPrice={handleCarPrice}/>
+          <Car id={1} onCarPrice={handleCarPrice}/>
           <div className={styles.price}>
             Total Rental Price: {new Intl.NumberFormat('en-US', {
             style: 'currency',

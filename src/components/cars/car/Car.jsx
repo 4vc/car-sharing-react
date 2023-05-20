@@ -1,8 +1,8 @@
 import {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
-import axios from 'axios';
 import styles from './Car.module.css';
 import carService from '../../../services/CarService.js';
+import categoryService from '../../../services/CategoryService.js';
 
 const Car = ({id, onCarPrice = () => {}}) => {
   const [car, setCar] = useState(null);
@@ -20,11 +20,9 @@ const Car = ({id, onCarPrice = () => {}}) => {
 
   useEffect(() => {
     if (car) {
-      axios.get('db.json')
-        .then(response => {
-          const data = response.data;
-          const categoryData = data.categories.find(category => category.id === car.idCategory);
-          setCategory(categoryData);
+      categoryService.getById(car.idCategory)
+        .then(categoryResponse => {
+          setCategory(categoryResponse.data);
         })
         .catch(error => {
           console.error('Error fetching category data:', error);

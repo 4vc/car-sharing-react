@@ -24,7 +24,7 @@ const Homepage = () => {
 
   return (
     <div>
-      <Header idOfLoggedUser={1}/>
+      <Header idOfLoggedUser={2}/>
       <div className={styles.header}>AVAILABLE CARS</div>
       <div className={styles.content}>
         <div>
@@ -55,7 +55,7 @@ const Homepage = () => {
                     {new Intl.NumberFormat('en-US', {
                       style: 'currency',
                       currency: 'USD',
-                    }).format(car.price)}/<span className={styles.day}> DAY</span>
+                    }).format(car.price)}/<span> HOUR</span>
                   </div>
                   <Button text={'Rent Now'} onClick={handleButtonClick}/>
                 </div>

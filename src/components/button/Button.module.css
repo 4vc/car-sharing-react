@@ -1,0 +1,14 @@
+button {
+    width: 116px;
+    height: 44px;
+    background-color: #EB5757;
+    color: white;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 20px;
+    cursor: pointer;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    border-radius: 5px;
+}

@@ -1,20 +1,3 @@
-.content {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-content: baseline;
-    flex-wrap: nowrap;
-    height: auto;
-}
-
-.header {
-    font-size: 36px;
-    font-weight: 300;
-    margin: 20px;
-    text-align: center;
-    font-family: 'Inter', sans-serif;
-}
-
 .item {
     position: relative;
     display: inline-block;
@@ -28,6 +11,18 @@
     border-radius: 10px;
 }
 
+.info {
+    text-align: left;
+}
+
+.year {
+    font-size: 20px;
+    font-weight: 700;
+    color: #EB5757;
+    float: right;
+    margin-bottom: 100px;
+}
+
 .brand {
     font-size: 20px;
     font-weight: 700;
@@ -39,12 +34,8 @@
     color: #959595;
 }
 
-.year {
-    font-size: 20px;
-    font-weight: 700;
-    color: #EB5757;
-    float: right;
-    margin-bottom: 100px;
+.plate {
+    grid-area: 1 / 1 / 2 / 2;
 }
 
 .image {
@@ -68,13 +59,9 @@
     color: #EB5757;
 }
 
-.plate {
-    grid-area: 1 / 1 / 2 / 2;
-}
-
 .buy {
     position: absolute;
-    bottom: 10px;
+    bottom: 20px;
     left: 0;
     right: 0;
     display: flex;
@@ -85,7 +72,7 @@
 
 .specification {
     position: absolute;
-    bottom: 120px;
+    bottom: 100px;
     margin-left: 25px;
     margin-right: 50px;
     left: 0;

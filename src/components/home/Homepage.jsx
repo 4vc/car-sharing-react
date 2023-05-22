@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 import styles from './Homepage.module.css';
 import Header from '../header/Header.jsx';
 import Button from '../button/Button.jsx';
@@ -9,8 +9,8 @@ const Homepage = () => {
   const [cars, setCars] = useState([]);
   const [categories, setCategories] = useState([]);
 
-  const handleButtonClick = () => {
-    window.location.href = '/order';
+  const handleButtonClick = (carId) => {
+    window.location.href = `/order?carId=${carId}`;
   };
 
   useEffect(() => {
@@ -58,7 +58,14 @@ const Homepage = () => {
                   </div>
                   <div className={styles.category}>
                     <p>Category:</p>
-                    <p>{categories[car.idCategory - 1].name}</p>
+                    <p>
+                      {
+                    car.idCategory === 1 ? ' A' :
+                    car.idCategory === 2 ? ' A1' :
+                    car.idCategory === 3 ? ' B' :
+                    car.idCategory === 4 ? ' B1' :
+                    categories[car.idCategory]?.name}
+                    </p>
                   </div>
                 </div>
                 <div className={styles.buy}>
@@ -68,7 +75,7 @@ const Homepage = () => {
                       currency: 'USD',
                     }).format(car.price)}/<span> HOUR</span>
                   </div>
-                  <Button text={'Rent Now'} onClick={handleButtonClick}/>
+                  <Button text={'Rent Now'} onClick={() => handleButtonClick(car.id)}/>
                 </div>
               </div>
             </div>

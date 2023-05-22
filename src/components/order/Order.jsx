@@ -1,4 +1,5 @@
-import {useState} from 'react';
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import moment from 'moment';
 import styles from './Order.module.css';
 import Header from '../header/Header.jsx';
@@ -12,7 +13,18 @@ const Order = () => {
   const [rentalTime, setRentalTime] = useState('');
   const [returnDate, setReturnDate] = useState('');
   const [returnTime, setReturnTime] = useState('');
+  const [carId, setCarId] = useState(null);
   const [pricePerHour, setPricePerHour] = useState(0);
+
+  const location = useLocation();
+
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search);
+    const carIdParam = searchParams.get('carId');
+    if (carIdParam) {
+      setCarId(parseInt(carIdParam));
+    }
+  }, [location]);
 
   const handleRentalDateChange = (event) => {
     const selectedRentalDate = event.target.value;
@@ -64,31 +76,33 @@ const Order = () => {
 
   return (
     <div>
-      <Header idOfLoggedUser={2}/>
+      <Header idOfLoggedUser={2} />
       <div className={styles.header}>ORDER</div>
       <div className={styles.container}>
         <div className={styles.container}>
           <div>
             <h2>Rental Info</h2>
-            <DateForm handleDateChange={handleRentalDateChange}/>
-            <TimeForm handleTimeChange={handleRentalTimeChange}/>
+            <DateForm handleDateChange={handleRentalDateChange} />
+            <TimeForm handleTimeChange={handleRentalTimeChange} />
           </div>
           <div>
             <h2>Return Info</h2>
-            <DateForm handleDateChange={handleReturnDateChange}/>
-            <TimeForm handleTimeChange={handleReturnTimeChange}/>
+            <DateForm handleDateChange={handleReturnDateChange} />
+            <TimeForm handleTimeChange={handleReturnTimeChange} />
           </div>
         </div>
         <div className={styles.car}>
           <div className={styles.summary}>Rental Summary</div>
-          <Car id={1} onCarPrice={handleCarPrice}/>
+          {carId && (
+            <Car id={carId} onCarPrice={handleCarPrice} />
+          )}
           <div className={styles.price}>
             Total Rental Price: {new Intl.NumberFormat('en-US', {
             style: 'currency',
             currency: 'USD',
           }).format(getTotalRentalPrice())}
           </div>
-          <Button text={'Proceed'} onClick={handleButtonClick}/>
+          <Button text={'Proceed'} onClick={handleButtonClick} />
         </div>
       </div>
     </div>

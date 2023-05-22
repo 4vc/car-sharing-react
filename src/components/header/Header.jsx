@@ -30,8 +30,10 @@ const Header = ({idOfLoggedUser}) => {
         </div>
 
         <div className={styles.logo}>
+          <a href={'../'}>
           <p>CAR</p>
           <p>SHARING</p>
+          </a>
         </div>
       </nav>
     </div>

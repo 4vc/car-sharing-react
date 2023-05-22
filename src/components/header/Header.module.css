@@ -5,6 +5,14 @@
     color: #E93560;
 }
 
+.logo a{
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    font-size: 32px;
+    color: #E93560;
+    text-decoration: none;
+}
+
 .navbar {
     height: 124px;
     border-bottom: 1px solid #C3D4E9;

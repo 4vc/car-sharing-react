@@ -54,7 +54,18 @@ const Car = ({id, onCarPrice = () => {}}) => {
             </div>
             <div className={styles.category}>
               <p>Category:</p>
-              {category && <p>{category.type}</p>}
+              {
+              category && 
+              <p>
+              {
+            car.idCategory === 1 ? ' A' :
+            car.idCategory === 2 ? ' A1' :
+            car.idCategory === 3 ? ' B' :
+            car.idCategory === 4 ? ' B1' :
+            categories[car.idCategory]?.name}
+            </p>
+              
+              }
             </div>
           </div>
           <div className={styles.buy}>

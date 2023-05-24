@@ -1,21 +1,17 @@
 import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import styles from './Header.module.css';
-import userService from '../../services/UserService.js';
+import adminService from '../../services/AdminService.js';
 
-const Header = ({idOfLoggedUser}) => {
-  const [user, setUser] = useState(null);
+const Header = () => {
+  const [admin, setAdmin] = useState(null);
 
   useEffect(() => {
-    userService.getById(idOfLoggedUser).then(
-
-      userResponse => {
-        setUser(userResponse.data);
-      }
-    ).catch(error => {
-      console.error('Error fetching user data:', error);
-    });
-  }, [idOfLoggedUser]);
+      adminService.getById(idOfLoggedUser).then(
+        userResponse => setAdmin(userResponse.data)
+      ).catch(error => console.error('Error fetching admin data:', error));
+    }
+  );
 
   return (
     <div>

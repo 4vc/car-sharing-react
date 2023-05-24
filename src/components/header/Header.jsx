@@ -19,11 +19,34 @@ const Header = () => {
   return (
     <div>
       <nav className={styles.navbar}>
-        <div className={styles.user}>
-          {user && (
+        <div className={styles.links}>
+          {!admin && (
             <React.Fragment>
-              <a href={'#'}><i
-                className="fa-solid fa-user"></i> {`${user.firstName} ${user.lastName}`}</a>
+              <a href={'sign-in'}>
+                <img
+                  height='48px'
+                  src='/src/assets/sign-in.png'
+                  alt='Sign In Icon'
+                />
+              </a>
+            </React.Fragment>
+          )}
+          {admin && (
+            <React.Fragment>
+              <a href={'admin'}>
+                <img
+                  width='64px'
+                  src='/src/assets/admin.png'
+                  alt='Admin Icon'
+                />
+              </a>
+              <a href={'sign-out'}>
+                <img
+                  height='48px'
+                  src='/src/assets/sign-out.png'
+                  alt='Sign Out Icon'
+                />
+              </a>
             </React.Fragment>
           )}
         </div>

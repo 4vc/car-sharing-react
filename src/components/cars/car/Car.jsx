@@ -10,23 +10,15 @@ const Car = ({id, onCarPrice = () => {}}) => {
 
   useEffect(() => {
     carService.getById(id)
-      .then(carResponse => {
-        setCar(carResponse.data);
-      })
-      .catch(error => {
-        console.error('Error fetching car data:', error);
-      });
+      .then(carResponse => setCar(carResponse.data))
+      .catch(error => console.error('Error fetching car data:', error));
   }, [id]);
 
   useEffect(() => {
     if (car) {
       categoryService.getById(car.idCategory)
-        .then(categoryResponse => {
-          setCategory(categoryResponse.data);
-        })
-        .catch(error => {
-          console.error('Error fetching category data:', error);
-        });
+        .then(categoryResponse => setCategory(categoryResponse.data))
+        .catch(error => console.error('Error fetching category data:', error));
 
       onCarPrice(car.price);
     }
@@ -34,7 +26,7 @@ const Car = ({id, onCarPrice = () => {}}) => {
 
   return (
     <div>
-      {car && (
+      {car && category && (
         <div className={styles.item}>
           <div className={styles.info}>
             <p className={styles.year}>{car.year}</p>
@@ -54,18 +46,7 @@ const Car = ({id, onCarPrice = () => {}}) => {
             </div>
             <div className={styles.category}>
               <p>Category:</p>
-              {
-              category && 
-              <p>
-              {
-            car.idCategory === 1 ? ' A' :
-            car.idCategory === 2 ? ' A1' :
-            car.idCategory === 3 ? ' B' :
-            car.idCategory === 4 ? ' B1' :
-            categories[car.idCategory]?.name}
-            </p>
-              
-              }
+              <p>{category.name}</p>
             </div>
           </div>
           <div className={styles.buy}>

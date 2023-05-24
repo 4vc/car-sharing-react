@@ -16,6 +16,10 @@ const Header = () => {
     }
   });
 
+  const handleSignOut = () => {
+    localStorage.removeItem('adminId');
+  };
+
   return (
     <div>
       <nav className={styles.navbar}>
@@ -46,7 +50,7 @@ const Header = () => {
                   alt='Admin Icon'
                 />
               </a>
-              <a href={'sign-out'}>
+              <a href={''} onClick={handleSignOut}>
                 <img
                   height='48px'
                   src='/src/assets/sign-out.png'

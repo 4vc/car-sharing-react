@@ -1,26 +1,26 @@
 import axios from 'axios';
 
-const USER_API_BASE_URL = 'http://localhost:8080/admins';
+const ADMIN_API_BASE_URL = 'http://localhost:8080/admins';
 
 class AdminService {
   getAll() {
-    return axios.get(USER_API_BASE_URL);
+    return axios.get(ADMIN_API_BASE_URL);
   }
 
   getById(id) {
-    return axios.get(USER_API_BASE_URL + '/' + id);
+    return axios.get(ADMIN_API_BASE_URL + '/' + id);
   }
 
-  save(user) {
-    return axios.post(USER_API_BASE_URL, user);
+  save(admin) {
+    return axios.post(ADMIN_API_BASE_URL, admin);
   }
 
-  update(id, user) {
-    return axios.put(USER_API_BASE_URL + '/' + id, user);
+  update(id, admin) {
+    return axios.put(ADMIN_API_BASE_URL + '/' + id, admin);
   }
 
   delete(id) {
-    return axios.delete(USER_API_BASE_URL + '/' + id);
+    return axios.delete(ADMIN_API_BASE_URL + '/' + id);
   }
 }
 

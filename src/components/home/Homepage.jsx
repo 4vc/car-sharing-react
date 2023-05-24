@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import {useEffect, useState} from 'react';
 import styles from './Homepage.module.css';
 import Header from '../header/Header.jsx';
 import Button from '../button/Button.jsx';

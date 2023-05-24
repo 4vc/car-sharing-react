@@ -19,6 +19,12 @@ const Header = () => {
   return (
     <div>
       <nav className={styles.navbar}>
+        <div className={styles.logo}>
+          <a href={'/'}>
+            <p>CAR</p>
+            <p>SHARING</p>
+          </a>
+        </div>
         <div className={styles.links}>
           {!admin && (
             <React.Fragment>
@@ -49,13 +55,6 @@ const Header = () => {
               </a>
             </React.Fragment>
           )}
-        </div>
-
-        <div className={styles.logo}>
-          <a href={'../'}>
-          <p>CAR</p>
-          <p>SHARING</p>
-          </a>
         </div>
       </nav>
     </div>

@@ -29,37 +29,39 @@ const Header = () => {
             <p>SHARING</p>
           </a>
         </div>
-        <div className={styles.links}>
-          {!admin && (
-            <React.Fragment>
-              <a href={'sign-in'}>
-                <img
-                  height='48px'
-                  src='/src/assets/sign-in.png'
-                  alt='Sign In Icon'
-                />
-              </a>
-            </React.Fragment>
-          )}
-          {admin && (
-            <React.Fragment>
-              <a href={'admin'}>
-                <img
-                  width='64px'
-                  src='/src/assets/admin.png'
-                  alt='Admin Icon'
-                />
-              </a>
-              <a href={''} onClick={handleSignOut}>
-                <img
-                  height='48px'
-                  src='/src/assets/sign-out.png'
-                  alt='Sign Out Icon'
-                />
-              </a>
-            </React.Fragment>
-          )}
-        </div>
+        {!window.location.href.includes('sign-') && (<div className={styles.links}>
+            {!admin && (
+              <React.Fragment>
+                <a href={'sign-in'}>
+                  <img
+                    height='48px'
+                    src='/src/assets/sign-in.png'
+                    alt='Sign In Icon'
+                  />
+                </a>
+              </React.Fragment>
+            )}
+            {admin && (
+              <React.Fragment>
+                <a href={'admin'}>
+                  <img
+                    width='64px'
+                    src='/src/assets/admin.png'
+                    alt='Admin Icon'
+                  />
+                </a>
+                <a href={''} onClick={handleSignOut}>
+                  <img
+                    height='48px'
+                    src='/src/assets/sign-out.png'
+                    alt='Sign Out Icon'
+                  />
+                </a>
+              </React.Fragment>
+            )}
+          </div>
+        )
+        }
       </nav>
     </div>
   );

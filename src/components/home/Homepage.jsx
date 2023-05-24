@@ -35,7 +35,7 @@ const Homepage = () => {
 
   return (
     <div>
-      <Header idOfLoggedUser={2}/>
+      <Header/>
       <div className={styles.header}>AVAILABLE CARS</div>
       <div className={styles.content}>
         <div>

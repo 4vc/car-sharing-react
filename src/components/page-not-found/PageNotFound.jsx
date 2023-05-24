@@ -3,7 +3,7 @@ import Header from '../header/Header.jsx';
 const PageNotFound = () => {
   return (
     <div>
-      <Header idOfLoggedUser={1}/>
+      <Header/>
       <h1>Page Not Found! Sorry...</h1>
     </div>
   );

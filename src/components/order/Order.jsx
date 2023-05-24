@@ -76,7 +76,7 @@ const Order = () => {
 
   return (
     <div>
-      <Header idOfLoggedUser={2} />
+      <Header/>
       <div className={styles.header}>ORDER</div>
       <div className={styles.container}>
         <div className={styles.container}>

@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-const USER_API_BASE_URL = 'http://localhost:8080/users';
+const USER_API_BASE_URL = 'http://localhost:8080/admins';
 
-class UserService {
+class AdminService {
   getAll() {
     return axios.get(USER_API_BASE_URL);
   }
@@ -24,4 +24,4 @@ class UserService {
   }
 }
 
-export default new UserService();
+export default new AdminService();

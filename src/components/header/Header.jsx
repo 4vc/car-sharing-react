@@ -1,40 +1,67 @@
 import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import styles from './Header.module.css';
-import userService from '../../services/UserService.js';
+import adminService from '../../services/AdminService.js';
 
-const Header = ({idOfLoggedUser}) => {
-  const [user, setUser] = useState(null);
+const Header = () => {
+  const [admin, setAdmin] = useState(null);
+
+  const adminId = Number(JSON.parse(localStorage.getItem('adminId')));
 
   useEffect(() => {
-    userService.getById(idOfLoggedUser).then(
+    if (adminId > 0) {
+      adminService.getById(adminId).then(
+        userResponse => setAdmin(userResponse.data)
+      ).catch(error => console.error('Error fetching admin data:', error));
+    }
+  });
 
-      userResponse => {
-        setUser(userResponse.data);
-      }
-    ).catch(error => {
-      console.error('Error fetching user data:', error);
-    });
-  }, [idOfLoggedUser]);
+  const handleSignOut = () => {
+    localStorage.removeItem('adminId');
+  };
 
   return (
     <div>
       <nav className={styles.navbar}>
-        <div className={styles.user}>
-          {user && (
-            <React.Fragment>
-              <a href={'#'}><i
-                className="fa-solid fa-user"></i> {`${user.firstName} ${user.lastName}`}</a>
-            </React.Fragment>
-          )}
-        </div>
-
         <div className={styles.logo}>
-          <a href={'../'}>
-          <p>CAR</p>
-          <p>SHARING</p>
+          <a href={'/'}>
+            <p>CAR</p>
+            <p>SHARING</p>
           </a>
         </div>
+        {!window.location.href.includes('sign-') && (<div className={styles.links}>
+            {!admin && (
+              <React.Fragment>
+                <a href={'sign-in'}>
+                  <img
+                    height='48px'
+                    src='/src/assets/sign-in.png'
+                    alt='Sign In Icon'
+                  />
+                </a>
+              </React.Fragment>
+            )}
+            {admin && (
+              <React.Fragment>
+                <a href={'admin'}>
+                  <img
+                    width='64px'
+                    src='/src/assets/admin.png'
+                    alt='Admin Icon'
+                  />
+                </a>
+                <a href={''} onClick={handleSignOut}>
+                  <img
+                    height='48px'
+                    src='/src/assets/sign-out.png'
+                    alt='Sign Out Icon'
+                  />
+                </a>
+              </React.Fragment>
+            )}
+          </div>
+        )
+        }
       </nav>
     </div>
   );

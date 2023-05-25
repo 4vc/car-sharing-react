@@ -5,7 +5,7 @@
     color: #E93560;
 }
 
-.logo a{
+.logo a {
     font-family: 'Inter', sans-serif;
     font-weight: 900;
     font-size: 32px;
@@ -17,18 +17,13 @@
     height: 124px;
     border-bottom: 1px solid #C3D4E9;
     padding: 1.25em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.user {
-    float: right;
-}
-
-.user a {
-    color: #EB5757;
-    text-decoration: none;
-}
-
-.user a:hover {
-    color: #af3131;
-    text-decoration: none;
+.links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

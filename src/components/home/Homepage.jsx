@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import {useEffect, useState} from 'react';
 import styles from './Homepage.module.css';
 import Header from '../header/Header.jsx';
 import Button from '../button/Button.jsx';
@@ -35,7 +35,7 @@ const Homepage = () => {
 
   return (
     <div>
-      <Header idOfLoggedUser={2}/>
+      <Header/>
       <div className={styles.header}>AVAILABLE CARS</div>
       <div className={styles.content}>
         <div>
@@ -58,14 +58,7 @@ const Homepage = () => {
                   </div>
                   <div className={styles.category}>
                     <p>Category:</p>
-                    <p>
-                      {
-                    car.idCategory === 1 ? ' A' :
-                    car.idCategory === 2 ? ' A1' :
-                    car.idCategory === 3 ? ' B' :
-                    car.idCategory === 4 ? ' B1' :
-                    categories[car.idCategory]?.name}
-                    </p>
+                    <p>{categories[car.idCategory - 1].name}</p>
                   </div>
                 </div>
                 <div className={styles.buy}>

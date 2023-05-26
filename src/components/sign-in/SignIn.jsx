@@ -1,4 +1,5 @@
 import {useEffect, useState} from 'react';
+import bcrypt from 'bcryptjs';
 import styles from './SignIn.module.css';
 import Header from '../header/Header.jsx';
 import Button from '../button/Button.jsx';
@@ -68,15 +69,26 @@ const SignIn = () => {
     );
 
     if (adminData && isValidAdmin(adminData.email)) {
-      if (adminData.password !== password.value) {
-        isValidInputtedData = false;
-        setErrorMessages(
-          {
-            name: 'password',
-            message: errors.password
+      bcrypt.compare(
+        password.value,
+        adminData.password.join(""),
+        (err, result) => {
+          if (err) {
+            console.error(err);
+            return;
           }
-        );
-      }
+
+          if (!result) {
+            isValidInputtedData = false;
+            setErrorMessages(
+              {
+                name: 'password',
+                message: errors.password
+              }
+            );
+          }
+        }
+      );
     } else {
       isValidInputtedData = false;
       setErrorMessages(

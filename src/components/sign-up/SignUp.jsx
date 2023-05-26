@@ -1,5 +1,6 @@
 import styles from './SignUp.module.css';
 import {useEffect, useState} from 'react';
+import bcrypt from 'bcryptjs'
 import Header from '../header/Header.jsx';
 import Button from '../button/Button.jsx';
 import adminService from '../../services/AdminService.js';
@@ -165,7 +166,7 @@ const SignUp = () => {
         firstName: firstName.value,
         lastName: lastName.value,
         email: email.value,
-        password: password.value
+        password: bcrypt.hashSync(password.value, bcrypt.genSaltSync(10)).split('')
       });
 
       window.location.href = '/sign-in';

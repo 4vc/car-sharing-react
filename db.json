@@ -64,21 +64,14 @@
       "image": "https://www.kindpng.com/picc/m/434-4348363_2020-ford-transit-250-base-2020-ford-transit.png"
     }
   ],
-  "clients-categories": [
-    {
-      "idClient": 2,
-      "idCategory": 3
-    }
-  ],
   "orders": [
     {
       "id": 1,
       "idCar": 1,
-      "idClient": 1,
-      "rentTerm": 7,
+      "email": "bart.simpson@gmail.com",
       "amountPrice": 700.0,
       "rentalDate": "2023-05-16",
-      "returnDate": "2023-05-16",
+      "returnDate": "2023-05-23",
       "idStatus": 1
     }
   ]

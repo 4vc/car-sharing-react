@@ -22,6 +22,10 @@ class OrderService {
   delete(id) {
     return axios.delete(ORDER_API_BASE_URL + '/' + id);
   }
+
+  getByEmail(email) {
+    return axios.get(ORDER_API_BASE_URL + '/email/' + email);
+  }
 }
 
 export default new OrderService();

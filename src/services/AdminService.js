@@ -22,6 +22,10 @@ class AdminService {
   delete(id) {
     return axios.delete(ADMIN_API_BASE_URL + '/' + id);
   }
+
+  getByEmail(email) {
+    return axios.get(ADMIN_API_BASE_URL + '/email/' + email);
+  }
 }
 
 export default new AdminService();

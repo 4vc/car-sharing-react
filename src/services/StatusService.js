@@ -22,6 +22,10 @@ class StatusService {
   delete(id) {
     return axios.delete(STATUS_API_BASE_URL + '/' + id);
   }
+
+  getByName(name) {
+    return axios.get(STATUS_API_BASE_URL + '/name/' + name);
+  }
 }
 
 export default new StatusService();

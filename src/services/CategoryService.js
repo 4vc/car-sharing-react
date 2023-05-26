@@ -22,6 +22,10 @@ class CategoryService {
   delete(id) {
     return axios.delete(CATEGORY_API_BASE_URL + '/' + id);
   }
+
+  getByName(name) {
+    return axios.get(CATEGORY_API_BASE_URL + '/name/' + name);
+  }
 }
 
 export default new CategoryService();

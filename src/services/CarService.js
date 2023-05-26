@@ -22,6 +22,10 @@ class CarService {
   delete(id) {
     return axios.delete(CAR_API_BASE_URL + '/' + id);
   }
+
+  getByPlate(plate) {
+    return axios.get(CAR_API_BASE_URL + '/plate/' + plate);
+  }
 }
 
 export default new CarService();

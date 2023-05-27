@@ -37,7 +37,7 @@
       "firstName": "John",
       "lastName": "Smith",
       "email": "john.smith@carsharing.com",
-      "password": "password"
+      "password": "$2a$10$AOVwVltOuiy27SBtwwqid.6gsPN/WTvJgDREGllWnR/f0P5HgiAmO"
     }
   ],
   "cars": [

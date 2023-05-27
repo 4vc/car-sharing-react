@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const ORDER_API_BASE_URL = 'http://localhost:8080/orders';
+const ORDER_API_BASE_URL = 'http://localhost:8080/api/v1/orders';
 
 class OrderService {
   getAll() {
@@ -21,6 +21,10 @@ class OrderService {
 
   delete(id) {
     return axios.delete(ORDER_API_BASE_URL + '/' + id);
+  }
+
+  getByEmail(email) {
+    return axios.get(ORDER_API_BASE_URL + '/email/' + email);
   }
 }
 

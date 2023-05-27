@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const CAR_API_BASE_URL = 'http://localhost:8080/cars';
+const CAR_API_BASE_URL = 'http://localhost:8080/api/v1/cars';
 
 class CarService {
   getAll() {
@@ -21,6 +21,10 @@ class CarService {
 
   delete(id) {
     return axios.delete(CAR_API_BASE_URL + '/' + id);
+  }
+
+  getByPlate(plate) {
+    return axios.get(CAR_API_BASE_URL + '/plate/' + plate);
   }
 }
 

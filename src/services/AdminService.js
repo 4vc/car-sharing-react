@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const ADMIN_API_BASE_URL = 'http://localhost:8080/admins';
+const ADMIN_API_BASE_URL = 'http://localhost:8080/api/v1/admins';
 
 class AdminService {
   getAll() {
@@ -21,6 +21,10 @@ class AdminService {
 
   delete(id) {
     return axios.delete(ADMIN_API_BASE_URL + '/' + id);
+  }
+
+  getByEmail(email) {
+    return axios.get(ADMIN_API_BASE_URL + '/email/' + email);
   }
 }
 

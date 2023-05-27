@@ -2,6 +2,7 @@ import {useEffect, useState} from 'react';
 import styles from './Homepage.module.css';
 import Header from '../header/Header.jsx';
 import Button from '../button/Button.jsx';
+import Image from '../image/Image.jsx';
 import carService from '../../services/CarService.js';
 import categoryService from '../../services/CategoryService.js';
 
@@ -45,12 +46,7 @@ const Homepage = () => {
                 <p className={styles.year}>{car.year}</p>
                 <p className={styles.brand}>{car.brand}</p>
                 <p className={styles.model}>{car.model}</p>
-                <div
-                  className={styles.image}
-                  style={{
-                    backgroundImage: `url(${car.image})`,
-                  }}
-                />
+                <Image imageBytes={car.image}/>
                 <div className={styles.specification}>
                   <div className={styles.plate}>
                     <p>Plate:</p>

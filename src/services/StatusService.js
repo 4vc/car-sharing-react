@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const STATUS_API_BASE_URL = 'http://localhost:8080/statuses';
+const STATUS_API_BASE_URL = 'http://localhost:8080/api/v1/statuses';
 
 class StatusService {
   getAll() {
@@ -21,6 +21,10 @@ class StatusService {
 
   delete(id) {
     return axios.delete(STATUS_API_BASE_URL + '/' + id);
+  }
+
+  getByName(name) {
+    return axios.get(STATUS_API_BASE_URL + '/name/' + name);
   }
 }
 

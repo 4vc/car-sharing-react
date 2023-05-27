@@ -1,10 +1,14 @@
 import {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import styles from './Car.module.css';
+import Image from "../../image/Image.jsx";
 import carService from '../../../services/CarService.js';
 import categoryService from '../../../services/CategoryService.js';
 
-const Car = ({id, onCarPrice = () => {}}) => {
+const Car = ({
+               id, onCarPrice = () => {
+  }
+             }) => {
   const [car, setCar] = useState(null);
   const [category, setCategory] = useState(null);
 
@@ -33,12 +37,7 @@ const Car = ({id, onCarPrice = () => {}}) => {
             <p className={styles.brand}>{car.brand}</p>
             <p className={styles.model}>{car.model}</p>
           </div>
-          <div
-            className={styles.image}
-            style={{
-              backgroundImage: `url(${car.image})`,
-            }}
-          />
+          <Image imageBytes={car.image}/>
           <div className={styles.specification}>
             <div className={styles.plate}>
               <p>Plate:</p>

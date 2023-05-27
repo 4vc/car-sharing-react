@@ -38,14 +38,6 @@
     grid-area: 1 / 1 / 2 / 2;
 }
 
-.image {
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    width: 280px;
-    height: 115px;
-}
-
 .price {
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 20px;

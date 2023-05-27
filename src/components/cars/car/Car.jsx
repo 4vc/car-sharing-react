@@ -5,10 +5,7 @@ import Image from "../../image/Image.jsx";
 import carService from '../../../services/CarService.js';
 import categoryService from '../../../services/CategoryService.js';
 
-const Car = ({
-               id, onCarPrice = () => {
-  }
-             }) => {
+const Car = ({id, onCarPrice = () => {}}) => {
   const [car, setCar] = useState(null);
   const [category, setCategory] = useState(null);
 

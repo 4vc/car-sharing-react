@@ -71,7 +71,7 @@ const SignIn = () => {
     if (adminData && isValidAdmin(adminData.email)) {
       bcrypt.compare(
         password.value,
-        adminData.password.join(""),
+        adminData.password,
         (err, result) => {
           if (err) {
             console.error(err);

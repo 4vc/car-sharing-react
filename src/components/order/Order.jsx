@@ -1,5 +1,5 @@
-import {useEffect, useState} from 'react';
-import {useLocation} from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import moment from 'moment';
 import styles from './Order.module.css';
 import Header from '../header/Header.jsx';
@@ -7,6 +7,7 @@ import DateForm from '../form-date/DateForm.jsx';
 import TimeForm from '../form-time/TimeForm.jsx';
 import Car from '../cars/car/Car.jsx';
 import Button from '../button/Button.jsx';
+import CarSharingMap from '../car-sharing-map/CarSharingMap.jsx';
 
 const Order = () => {
   const [rentalDate, setRentalDate] = useState('');
@@ -72,39 +73,41 @@ const Order = () => {
     const returnDateTime = moment(returnDateTimeString, 'YYYY-MM-DDThh:mm A').toDate();
 
     return pricePerHour * (returnDateTime - rentalDateTime) / 60 / 60 / 1000;
-  }
+  };
 
   return (
     <div>
-      <Header/>
+      <Header />
       <div className={styles.header}>ORDER</div>
       <div className={styles.container}>
         <div className={styles.container}>
           <div>
             <h2>Rental Info</h2>
-            <DateForm handleDateChange={handleRentalDateChange}/>
-            <TimeForm handleTimeChange={handleRentalTimeChange}/>
+            <DateForm handleDateChange={handleRentalDateChange} />
+            <TimeForm handleTimeChange={handleRentalTimeChange} />
           </div>
           <div>
             <h2>Return Info</h2>
-            <DateForm handleDateChange={handleReturnDateChange}/>
-            <TimeForm handleTimeChange={handleReturnTimeChange}/>
+            <DateForm handleDateChange={handleReturnDateChange} />
+            <TimeForm handleTimeChange={handleReturnTimeChange} />
           </div>
         </div>
         <div className={styles.car}>
           <div className={styles.summary}>Rental Summary</div>
-          {carId && (
-            <Car id={carId} onCarPrice={handleCarPrice}/>
-          )}
+          {carId && <Car id={carId} onCarPrice={handleCarPrice} />}
           <div className={styles.price}>
-            Total Rental Price: {new Intl.NumberFormat('en-US', {
-            style: 'currency',
-            currency: 'USD',
-          }).format(getTotalRentalPrice())}
+            Total Rental Price:{' '}
+            {new Intl.NumberFormat('en-US', {
+              style: 'currency',
+              currency: 'USD',
+            }).format(getTotalRentalPrice())}
           </div>
-          <Button text={'Proceed'} onClick={handleButtonClick}/>
+          <Button text={'Proceed'} onClick={handleButtonClick} />
         </div>
       </div>
+      <div className={styles.map}>
+          <CarSharingMap />
+        </div>
     </div>
   );
 };

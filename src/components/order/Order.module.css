@@ -48,3 +48,10 @@ select {
     font-weight: bold;
     color: #EB5757;
 }
+
+.map {
+    position:relative;
+    height: 400px;
+    width: 100%;
+    background-color: #f1f1f1;
+  }

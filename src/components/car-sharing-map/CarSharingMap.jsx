@@ -17,7 +17,7 @@ const CarSharingMap = ({ carId }) => {
       });
   }, []);
 
-  useEffect(() => {
+  useEffect(() => { 
     const selectedCar = cars.find((car) => car.id === carId);
     if (selectedCar) {
       const [lat, lng] = selectedCar.coordinates.split(',').map(parseFloat);

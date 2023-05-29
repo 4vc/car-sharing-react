@@ -50,7 +50,8 @@
       "idCategory": 3,
       "plate": "CA1234CA",
       "available": 1,
-      "image": "https://imgpng.ru/d/camaro_PNG19.png"
+      "image": "https://imgpng.ru/d/camaro_PNG19.png",
+      "coordinates": "49.444,32.059"
     },
     {
       "id": 2,
@@ -61,7 +62,8 @@
       "idCategory": 3,
       "plate": "AC4321AC",
       "available": 1,
-      "image": "https://www.kindpng.com/picc/m/434-4348363_2020-ford-transit-250-base-2020-ford-transit.png"
+      "image": "https://www.kindpng.com/picc/m/434-4348363_2020-ford-transit-250-base-2020-ford-transit.png",
+      "coordinates": "49.4604394,32.0203818"
     }
   ],
   "clients-categories": [

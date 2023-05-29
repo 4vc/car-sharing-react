@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import moment from 'moment';
 import styles from './Order.module.css';
@@ -106,8 +106,8 @@ const Order = () => {
         </div>
       </div>
       <div className={styles.map}>
-          <CarSharingMap />
-        </div>
+        {carId && <CarSharingMap carId={carId} />}
+      </div>
     </div>
   );
 };

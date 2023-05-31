@@ -4,7 +4,7 @@ import SignIn from './components/sign-in/SignIn.jsx';
 import SignUp from './components/sign-up/SignUp.jsx';
 import Order from './components/order/Order.jsx';
 import Admin from './components/admin/Admin.jsx';
-import ShowAdminCars from './components/cars/show-admin-cars/ShowAdminCars.jsx';
+import AdminCars from './components/cars/admin-cars/AdminCars.jsx';
 import AddCar from './components/cars/add-car/AddCar.jsx';
 import PageNotFound from './components/page-not-found/PageNotFound.jsx';
 
@@ -23,7 +23,7 @@ if (localStorage.getItem('adminId')) {
     <Routes>
       <Route path='/' element={<Homepage/>}/>
       <Route path='/admin' element={<Admin/>}/>
-      <Route path='/cars' element={<ShowAdminCars/>}/>
+      <Route path='/cars' element={<AdminCars/>}/>
       <Route path='/cars/add' element={<AddCar/>}/>
       <Route path='*' element={<PageNotFound/>}/>
     </Routes>

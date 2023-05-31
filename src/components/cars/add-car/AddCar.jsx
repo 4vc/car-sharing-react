@@ -146,7 +146,7 @@ const AddCar = () => {
     return names.includes(category);
   };
 
-  function getIdOfCategory(category) {
+  const getIdOfCategory = (category) => {
     let idCategory = 0;
     for (const c of categories) {
       if (c.name === category.value) {
@@ -244,7 +244,7 @@ const AddCar = () => {
   };
 
   const saveCar = (
-    brand, model, year, price, category, plate, carImage
+    brand, model, year, price, category, plate, image
   ) => {
     carService.save({
       brand: brand,
@@ -255,7 +255,7 @@ const AddCar = () => {
       plate: plate,
       available: 1,
       idAdmin: admin.id,
-      image: carImage
+      image: image
     });
 
     window.location.href = '/admin/cars';

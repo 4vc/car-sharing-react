@@ -28,6 +28,7 @@ const AdminCars = () => {
     <div>
       <Header/>
       <div className={styles.container}>
+        {filteredCars.length <= 0 && (<h1>Cars Not Found!</h1>)}
         {filteredCars.map(car => (
             <div key={car.id}>
               <Car id={car.id}/>

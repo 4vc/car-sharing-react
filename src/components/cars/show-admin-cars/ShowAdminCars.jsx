@@ -1,11 +1,11 @@
 import {useEffect, useState} from 'react';
-import styles from './ShowCars.module.css';
+import styles from './ShowAdminCars.module.css';
 import carService from '../../../services/CarService.js';
 import Header from '../../header/Header.jsx';
-import Car from '../../cars/car/Car.jsx';
+import Car from '../car/Car.jsx';
 import Button from '../../button/Button.jsx';
 
-const ShowCars = () => {
+const ShowAdminCars = () => {
   const [cars, setCars] = useState([]);
 
   useEffect(() => {
@@ -42,4 +42,4 @@ const ShowCars = () => {
   );
 };
 
-export default ShowCars;
+export default ShowAdminCars;

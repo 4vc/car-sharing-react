@@ -138,6 +138,14 @@ const AddCar = () => {
     return true;
   };
 
+  const isValidCategory = (category) => {
+    let names = [];
+    for (const c of categories) {
+      names.push(c.name);
+    }
+    return names.includes(category);
+  };
+
   function getIdOfCategory(category) {
     let idCategory = 0;
     for (const c of categories) {
@@ -189,6 +197,7 @@ const AddCar = () => {
     } else if (
       !category.value
       || !category.value.trim().length
+      || !isValidCategory(category.value)
     ) {
       setErrorMessages({
         name: 'category',

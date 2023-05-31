@@ -32,7 +32,7 @@ const Header = () => {
         {!window.location.href.includes('sign-') && (<div className={styles.links}>
             {!admin && (
               <React.Fragment>
-                <a href={'sign-in'}>
+                <a href={'/sign-in'}>
                   <img
                     height='48px'
                     src='/src/assets/sign-in.png'
@@ -43,7 +43,7 @@ const Header = () => {
             )}
             {admin && (
               <React.Fragment>
-                <a href={'admin'}>
+                <a href={'/admin'}>
                   <img
                     width='64px'
                     src='/src/assets/admin.png'

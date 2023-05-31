@@ -50,7 +50,7 @@ const Header = () => {
                     alt='Admin Icon'
                   />
                 </a>
-                <a href={''} onClick={handleSignOut}>
+                <a href={'/'} onClick={handleSignOut}>
                   <img
                     height='48px'
                     src='/src/assets/sign-out.png'

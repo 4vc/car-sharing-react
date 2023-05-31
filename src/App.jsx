@@ -22,7 +22,7 @@ if (localStorage.getItem('adminId')) {
     <Routes>
       <Route path='/' element={<Homepage/>}/>
       <Route path='/admin' element={<Admin/>}/>
-      <Route path='/admin/add-car' element={<AddCar/>}/>
+      <Route path='/cars/add' element={<AddCar/>}/>
       <Route path='*' element={<PageNotFound/>}/>
     </Routes>
   );

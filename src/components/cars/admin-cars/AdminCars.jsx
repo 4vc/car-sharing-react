@@ -19,7 +19,7 @@ const AdminCars = () => {
   }, []);
 
   const handleButtonClick = (id) => {
-    window.location.href = `/cars/${id}`;
+    window.location.href = `/admin/cars/${id}`;
   };
 
   const filteredCars = cars.filter(car => car.idAdmin === Number(localStorage.getItem('adminId')));

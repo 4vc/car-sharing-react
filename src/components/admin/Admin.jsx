@@ -4,11 +4,11 @@ import Button from '../button/Button.jsx';
 
 const Admin = () => {
   const handleShowMyCars = () => {
-    window.location.href = '/cars';
+    window.location.href = '/admin/cars';
   };
 
   const handleAddMyCar = () => {
-    window.location.href = '/cars/add';
+    window.location.href = '/admin/cars/add';
   };
 
   return (

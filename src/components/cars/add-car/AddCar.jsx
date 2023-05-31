@@ -249,7 +249,7 @@ const AddCar = () => {
       image: carImage
     });
 
-    window.location.href = '/cars';
+    window.location.href = '/admin/cars';
   };
 
   const handleCancelClick = () => {

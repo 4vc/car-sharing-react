@@ -7,6 +7,7 @@ import Admin from './components/admin/Admin.jsx';
 import AdminCars from './components/cars/admin-cars/AdminCars.jsx';
 import AdminCar from './components/cars/admin-car/AdminCar.jsx';
 import EditCar from './components/cars/edit-car/EditCar.jsx';
+import AdminOrders from './components/order/admin-orders/AdminOrders.jsx';
 import AddCar from './components/cars/add-car/AddCar.jsx';
 import PageNotFound from './components/page-not-found/PageNotFound.jsx';
 
@@ -28,6 +29,7 @@ if (localStorage.getItem('adminId')) {
       <Route path='/admin/cars' element={<AdminCars/>}/>
       <Route path='/admin/cars/:id' element={<AdminCar/>}/>
       <Route path='/admin/cars/:id/edit' element={<EditCar/>}/>
+      <Route path='/admin/orders' element={<AdminOrders/>}/>
       <Route path='/admin/cars/add' element={<AddCar/>}/>
       <Route path='*' element={<PageNotFound/>}/>
     </Routes>

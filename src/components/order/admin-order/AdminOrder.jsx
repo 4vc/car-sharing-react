@@ -72,7 +72,11 @@ const AdminOrder = () => {
 
   const handleDeleteOrder = () => {
     orderService.delete(order.id)
-      .then(() => window.location.href = `/admin/orders`)
+      .then(() => {
+        car.available = 1;
+        carService.update(car.id, car);
+        window.location.href = `/admin/orders`;
+      })
       .catch(error => console.error('Error deleting order:', error));
   };
 
@@ -92,6 +96,11 @@ const AdminOrder = () => {
           <h3>Email: {order.email}</h3>
           <h3>Rental Date: {getFormattedDate(order.rentalDate)}</h3>
           <h3>Return Date: {getFormattedDate(order.returnDate)}</h3>
+          <h3>Amount Price: {new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD',
+          }).format(order.amountPrice)}
+          </h3>
           <h3>Status: {status.name}</h3>
           <hr/>
           <Image imageBytes={car.image}/>

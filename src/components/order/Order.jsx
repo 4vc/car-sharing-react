@@ -61,7 +61,7 @@ const Order = () => {
       Number(date.year),
       Number(date.month) - 1,
       Number(date.date),
-      adjustedHour + 3,
+      adjustedHour,
       Number(date.minute),
       Number(date.second)
     ).getTime();

@@ -1,0 +1,8 @@
+.buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: baseline;
+    flex-wrap: nowrap;
+    height: auto;
+}

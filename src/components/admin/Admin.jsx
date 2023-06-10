@@ -7,6 +7,10 @@ const Admin = () => {
     window.location.href = '/admin/cars';
   };
 
+  const handleShowOrders = () => {
+    window.location.href = '/admin/orders';
+  };
+
   const handleAddMyCar = () => {
     window.location.href = '/admin/cars/add';
   };
@@ -16,6 +20,7 @@ const Admin = () => {
       <Header/>
       <div className={styles.buttons}>
         <Button onClick={handleShowMyCars} text={'Show my cars'}/>
+        <Button onClick={handleShowOrders} text={'Show orders'}/>
         <Button onClick={handleAddMyCar} text={'Add new car'}/>
       </div>
     </div>

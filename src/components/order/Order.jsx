@@ -5,6 +5,7 @@ import Header from '../header/Header.jsx';
 import DateTime from '../date-time/DateTime.jsx';
 import Car from '../cars/car/Car.jsx';
 import Button from '../button/Button.jsx';
+import orderService from '../../services/OrderService.js';
 
 const Order = () => {
   const [email, setEmail] = useState(null);
@@ -70,6 +71,18 @@ const Order = () => {
     if (getTotalRentalPrice() <= 0 || !email || !email.trim().length) {
       return;
     }
+
+    const searchParams = new URLSearchParams(location.search);
+    const carIdParam = searchParams.get('carId');
+
+    orderService.save({
+      'idCar': Number(carIdParam),
+      'email': email,
+      'amountPrice': getTotalRentalPrice,
+      'rentalDate': new Date(getMilliseconds(rentalDate)),
+      'returnDate': new Date(getMilliseconds(returnDate)),
+      'idStatus': 1
+    });
 
     alert(`Order is in process!`);
     window.location.href = '/';

@@ -2,11 +2,11 @@ import {useEffect, useState} from 'react';
 import styles from './AdminOrder.module.css';
 import Header from '../../header/Header.jsx';
 import Button from '../../button/Button.jsx';
+import Image from '../../image/Image.jsx';
 import orderService from '../../../services/OrderService.js';
+import statusService from '../../../services/StatusService.js';
 import carService from '../../../services/CarService.js';
-import statusService from "../../../services/StatusService.js";
-import categoryService from "../../../services/CategoryService.js";
-import Image from "../../image/Image.jsx";
+import categoryService from '../../../services/CategoryService.js';
 
 const AdminOrder = () => {
   const [order, setOrder] = useState(null);
@@ -37,7 +37,7 @@ const AdminOrder = () => {
           }
         }
       }
-    ).catch(error => console.error('Error fetching orders data:', error))
+    ).catch(error => console.error('Error fetching order data:', error))
   }, [cars]);
 
   useEffect(() => {

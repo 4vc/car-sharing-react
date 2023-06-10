@@ -6,12 +6,13 @@ import DateTime from '../date-time/DateTime.jsx';
 import Car from '../cars/car/Car.jsx';
 import Button from '../button/Button.jsx';
 import orderService from '../../services/OrderService.js';
+import carService from '../../services/CarService.js';
 
 const Order = () => {
   const [email, setEmail] = useState(null);
   const [rentalDate, setRentalDate] = useState(null);
   const [returnDate, setReturnDate] = useState(null);
-  const [carId, setCarId] = useState(null);
+  const [car, setCar] = useState(null);
   const [pricePerHour, setPricePerHour] = useState(0);
 
   const location = useLocation();
@@ -20,7 +21,9 @@ const Order = () => {
     const searchParams = new URLSearchParams(location.search);
     const carIdParam = searchParams.get('carId');
     if (carIdParam) {
-      setCarId(parseInt(carIdParam));
+      carService.getById(carIdParam)
+        .then(carResponse => setCar(carResponse.data))
+        .catch(error => console.error('Error fetching cars data:', error));
     }
   }, [location]);
 
@@ -72,17 +75,17 @@ const Order = () => {
       return;
     }
 
-    const searchParams = new URLSearchParams(location.search);
-    const carIdParam = searchParams.get('carId');
-
     orderService.save({
-      'idCar': Number(carIdParam),
+      'idCar': car.id,
       'email': email,
-      'amountPrice': getTotalRentalPrice,
+      'amountPrice': getTotalRentalPrice(),
       'rentalDate': new Date(getMilliseconds(rentalDate)),
       'returnDate': new Date(getMilliseconds(returnDate)),
       'idStatus': 1
     });
+
+    car.available = 0;
+    carService.update(car.id, car);
 
     alert(`Order is in process!`);
     window.location.href = '/';
@@ -126,8 +129,8 @@ const Order = () => {
         </div>
         <div className={styles.car}>
           <div className={styles.summary}>Rental Summary</div>
-          {carId && (
-            <Car id={carId} onCarPrice={handleCarPrice}/>
+          {car && (
+            <Car id={car.id} onCarPrice={handleCarPrice}/>
           )}
           <div className={styles.price}>
             Total Rental Price: {new Intl.NumberFormat('en-US', {

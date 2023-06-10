@@ -7,6 +7,7 @@ import Car from '../cars/car/Car.jsx';
 import Button from '../button/Button.jsx';
 
 const Order = () => {
+  const [email, setEmail] = useState(null);
   const [rentalDate, setRentalDate] = useState(null);
   const [returnDate, setReturnDate] = useState(null);
   const [carId, setCarId] = useState(null);
@@ -21,6 +22,19 @@ const Order = () => {
       setCarId(parseInt(carIdParam));
     }
   }, [location]);
+
+  const handleForm = (event) => {
+    event.preventDefault();
+
+    let {email} = document.forms[0];
+
+    if (
+      email.value
+      || email.value.trim().length
+    ) {
+      setEmail(email.value);
+    }
+  };
 
   const handleRentalDate = (date) => {
     setRentalDate(date);
@@ -53,7 +67,7 @@ const Order = () => {
   }
 
   const handleButtonClick = () => {
-    if (getTotalRentalPrice() <= 0) {
+    if (getTotalRentalPrice() <= 0 || !email || !email.trim().length) {
       return;
     }
 
@@ -70,9 +84,22 @@ const Order = () => {
   }
 
   return (
-    <div>
+    <div className={styles.center}>
       <Header/>
       <div className={styles.header}>ORDER</div>
+      <div className={styles.container}>
+        <form className={styles.form} onInput={handleForm}>
+          <div className={styles.formcontrol}>
+            <input
+              type='text'
+              name='email'
+              id='email'
+              placeholder='Email'
+              required
+            />
+          </div>
+        </form>
+      </div>
       <div className={styles.container}>
         <div className={styles.container}>
           <div>
@@ -95,9 +122,9 @@ const Order = () => {
             currency: 'USD',
           }).format(getTotalRentalPrice())}
           </div>
-          <Button text={'Proceed'} onClick={handleButtonClick}/>
         </div>
       </div>
+      <Button text={'Proceed'} onClick={handleButtonClick}/>
     </div>
   );
 };

@@ -46,7 +46,7 @@
       "brand": "Chevrolet",
       "model": "Camaro",
       "year": "2020",
-      "price": 10.0,
+      "price": 10,
       "idCategory": 3,
       "plate": "CA1234CA",
       "available": 1,
@@ -58,7 +58,7 @@
       "brand": "Ford",
       "model": "Transit",
       "year": "2010",
-      "price": 12.0,
+      "price": 12,
       "idCategory": 3,
       "plate": "AC4321AC",
       "available": 1,
@@ -69,11 +69,10 @@
   "orders": [
     {
       "id": 1,
-      "idCar": 1,
+      "idCar": 2,
       "email": "bart.simpson@gmail.com",
-      "amountPrice": 700.0,
-      "rentalDate": "2023-05-16",
-      "returnDate": "2023-05-23",
+      "rentalDate": "2023-06-10T20:50:04.000Z",
+      "returnDate": "2023-06-11T20:50:04.000Z",
       "idStatus": 1
     }
   ]

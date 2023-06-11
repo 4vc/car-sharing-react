@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import styles from './AdminCars.module.css';
+import styles from './AdminCar.module.css';
 import carService from '../../../services/CarService.js';
 import categoryService from '../../../services/CategoryService.js';
 import Header from '../../header/Header.jsx';

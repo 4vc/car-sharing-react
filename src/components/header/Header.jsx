@@ -14,7 +14,7 @@ const Header = () => {
         userResponse => setAdmin(userResponse.data)
       ).catch(error => console.error('Error fetching admin data:', error));
     }
-  });
+  }, [adminId]);
 
   const handleSignOut = () => {
     localStorage.removeItem('adminId');

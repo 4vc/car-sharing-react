@@ -1,12 +1,12 @@
 import {useEffect, useState} from 'react';
-import styles from './Homepage.module.css';
+import styles from './Home.module.css';
 import Header from '../header/Header.jsx';
 import Button from '../button/Button.jsx';
 import Image from '../image/Image.jsx';
 import carService from '../../services/CarService.js';
 import categoryService from '../../services/CategoryService.js';
 
-const Homepage = () => {
+const Home = () => {
   const [cars, setCars] = useState([]);
   const [categories, setCategories] = useState([]);
 
@@ -75,4 +75,4 @@ const Homepage = () => {
   );
 };
 
-export default Homepage;
+export default Home;

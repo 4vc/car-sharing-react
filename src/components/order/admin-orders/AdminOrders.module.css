@@ -1,0 +1,22 @@
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+@media (max-width: 384px) {
+    .container {
+        flex-direction: column;
+    }
+}
+
+.item {
+    position: relative;
+    display: inline-block;
+    width: fit-content;
+    block-size: fit-content;
+    border: 1px solid #BFBFBF;
+    margin: 10px;
+    padding: 10px;
+    background-color: white;
+    border-radius: 10px;
+}

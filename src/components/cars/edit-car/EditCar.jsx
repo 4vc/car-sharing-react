@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import {useEffect, useState} from 'react';
 import styles from './EditCar.module.css';
 import Header from '../../header/Header.jsx';
 import Button from '../../button/Button.jsx';
@@ -126,13 +126,13 @@ const EditCar = () => {
             type="text"
             name="coordinates"
             id="coordinates"
-            defaultValue={car.coordinates.join(', ')}
+            defaultValue={car.coordinates}
             required
           />
           {renderErrorMessage('coordinates')}
         </div>
         <div className={styles.formcontrol}>
-          <input type="file" name="image" id="image" required />
+          <input type="file" name="image" id="image" required/>
         </div>
       </form>
     </div>
@@ -174,20 +174,6 @@ const EditCar = () => {
       }
     }
     return idCategory;
-  };
-
-  const isValidCoordinates = (coordinates) => {
-    const [lat, lng] = coordinates.split(',').map((coord) =>
-      parseFloat(coord.trim())
-    );
-    return !isNaN(lat) && !isNaN(lng);
-  };
-
-  const parseCoordinates = (coordinates) => {
-    const [lat, lng] = coordinates.split(',').map((coord) =>
-      parseFloat(coord.trim())
-    );
-    return [lat, lng];
   };
 
   const handleUpdateClick = (event) => {
@@ -254,8 +240,7 @@ const EditCar = () => {
       });
     } else if (
       !coordinates.value ||
-      !coordinates.value.trim().length ||
-      !isValidCoordinates(coordinates.value)
+      !coordinates.value.trim().length
     ) {
       setErrorMessages({
         name: 'coordinates',
@@ -277,7 +262,7 @@ const EditCar = () => {
           getIdOfCategory(category),
           plate.value,
           locationName.value,
-          parseCoordinates(coordinates.value),
+          coordinates.value,
           reader.result.split(',')[1]
         );
 
@@ -299,7 +284,7 @@ const EditCar = () => {
           getIdOfCategory(category),
           plate.value,
           locationName.value,
-          parseCoordinates(coordinates.value),
+          coordinates.value,
           car.image
         );
       }
@@ -340,12 +325,12 @@ const EditCar = () => {
 
   return (
     <div>
-      <Header />
+      <Header/>
       <div className={styles.center}>
         <h1>Edit Car</h1>
         {renderForm}
-        <Button onClick={handleUpdateClick} text={'Update'} />
-        <Button onClick={handleCancelClick} text={'Cancel'} />
+        <Button onClick={handleUpdateClick} text={'Update'}/>
+        <Button onClick={handleCancelClick} text={'Cancel'}/>
       </div>
     </div>
   );

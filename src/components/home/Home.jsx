@@ -1,10 +1,11 @@
-import {useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 import styles from './Home.module.css';
 import Header from '../header/Header.jsx';
 import Button from '../button/Button.jsx';
 import Image from '../image/Image.jsx';
 import carService from '../../services/CarService.js';
 import categoryService from '../../services/CategoryService.js';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 
 const Home = () => {
   const [cars, setCars] = useState([]);
@@ -39,7 +40,7 @@ const Home = () => {
       <Header/>
       <div className={styles.header}>AVAILABLE CARS</div>
       <div className={styles.content}>
-        <div>
+        <div className={styles.items}>
           {cars.map(car => (
             <div key={car.id} className={styles.item}>
               <div>
@@ -70,6 +71,33 @@ const Home = () => {
             </div>
           ))}
         </div>
+      </div>
+      <div className={styles.mapContainer}>
+        <MapContainer
+          center={[49.4285400, 32.0620700]}
+          zoom={12}
+          style={{ height: '400px', width: '100%' }}
+        >
+          <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+          {cars.map(car => (
+            <Marker key={car.id} position={car.coordinates}>
+              <Popup>
+              <div>
+              <div>
+               <h4>{car.brand}</h4>
+               <h4>{car.model}</h4>
+               <Image imageBytes={car.image}/>
+               <p>Year: {car.year}</p>
+               <p>Price: {car.price}</p>
+               <p>Plate: {car.plate}</p>
+               <p>Location: {car.locationName}</p>
+               <p>Coordinates: {car.coordinates}</p>
+               </div>
+             </div>
+              </Popup>
+            </Marker>
+          ))}
+        </MapContainer>
       </div>
     </div>
   );

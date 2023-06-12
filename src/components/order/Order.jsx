@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import {useEffect, useState} from 'react';
+import {useLocation} from 'react-router-dom';
+import {MapContainer, Marker, Popup, TileLayer} from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import styles from './Order.module.css';
 import Header from '../header/Header.jsx';
@@ -26,7 +26,12 @@ const Order = () => {
     if (carIdParam) {
       carService
         .getById(carIdParam)
-        .then((carResponse) => setCar(carResponse.data))
+        .then((carResponse) => {
+          const car = carResponse.data;
+          const coordinates = carResponse.data.coordinates.split(',');
+          car.coordinates = [parseFloat(coordinates[0]), parseFloat(coordinates[1])];
+          setCar(car);
+        })
         .catch((error) => console.error('Error fetching cars data:', error));
     }
   }, [location]);
@@ -34,7 +39,7 @@ const Order = () => {
   const handleForm = (event) => {
     event.preventDefault();
 
-    let { email } = document.forms[0];
+    let {email} = document.forms[0];
 
     if (email.value || email.value.trim().length) {
       setEmail(email.value);
@@ -83,13 +88,12 @@ const Order = () => {
       rentalDate: new Date(getMilliseconds(rentalDate)),
       returnDate: new Date(getMilliseconds(returnDate)),
       idStatus: 1,
+    }).then(() => {
+      car.available = 0;
+      carService.update(car.id, car).then();
+      alert('Order is in process!');
+      window.location.href = '/';
     });
-
-    car.available = 0;
-    carService.update(car.id, car);
-
-    alert('Order is in process!');
-    window.location.href = '/';
   };
 
   const getTotalRentalPrice = () => {
@@ -101,16 +105,16 @@ const Order = () => {
       pricePerHour *
       Math.floor(
         (getMilliseconds(returnDate) - getMilliseconds(rentalDate)) /
-          60 /
-          60 /
-          1000
+        60 /
+        60 /
+        1000
       )
     );
   };
 
   return (
     <div className={styles.center}>
-      <Header />
+      <Header/>
       <div className={styles.header}>ORDER</div>
       <div className={styles.container}>
         <form className={styles.form} onInput={handleForm}>
@@ -130,11 +134,11 @@ const Order = () => {
         <div className={styles.container}>
           <div>
             <h3>Select Rental Date</h3>
-            <DateTime onChangeDate={handleRentalDate} />
+            <DateTime onChangeDate={handleRentalDate}/>
           </div>
           <div>
             <h3>Select Return Date</h3>
-            <DateTime onChangeDate={handleReturnDate} />
+            <DateTime onChangeDate={handleReturnDate}/>
           </div>
         </div>
 
@@ -171,32 +175,32 @@ const Order = () => {
           <MapContainer
             center={car.coordinates}
             zoom={15}
-            style={{ height: '400px', width: '100%' }}
+            style={{height: '400px', width: '100%'}}
           >
             <TileLayer
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               attribution="Map data © <a href=&quot;https://openstreetmap.org&quot;>OpenStreetMap</a> contributors"
             />
             <Marker position={car.coordinates}>
-             <Popup>
-             <div>
-              <div className={popupstyles.info}>
-               <h4>{car.brand}</h4>
-               <h4>{car.model}</h4>
-               <p>Year: {car.year}</p>
-               <p>Price: {car.price}</p>
-               <p>Plate: {car.plate}</p>
-               <p>Location: {car.locationName}</p>
-               <p>Coordinates: {car.coordinates}</p>
-               </div>
-             </div>
-           </Popup>
-           </Marker>
+              <Popup>
+                <div>
+                  <div className={popupstyles.info}>
+                    <h4>{car.brand}</h4>
+                    <h4>{car.model}</h4>
+                    <p>Year: {car.year}</p>
+                    <p>Price: {car.price}</p>
+                    <p>Plate: {car.plate}</p>
+                    <p>Location: {car.locationName}</p>
+                    <p>Coordinates: {car.coordinates}</p>
+                  </div>
+                </div>
+              </Popup>
+            </Marker>
           </MapContainer>
         </div>
       )}
 
-      <Button text={'Proceed'} onClick={handleButtonClick} />
+      <Button text={'Proceed'} onClick={handleButtonClick}/>
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import {useEffect, useState} from 'react';
 import styles from './AddCar.module.css';
 import Header from '../../header/Header.jsx';
 import Button from '../../button/Button.jsx';
@@ -50,39 +50,40 @@ const AddCar = () => {
     <div className={styles.form}>
       <form>
         <div className={styles.formcontrol}>
-          <input type="text" name="brand" id="brand" placeholder="Brand" required />
+          <input type="text" name="brand" id="brand" placeholder="Brand" required/>
           {renderErrorMessage('brand')}
         </div>
         <div className={styles.formcontrol}>
-          <input type="text" name="model" id="model" placeholder="Model" required />
+          <input type="text" name="model" id="model" placeholder="Model" required/>
           {renderErrorMessage('model')}
         </div>
         <div className={styles.formcontrol}>
-          <input type="text" name="year" id="year" placeholder="Year" required />
+          <input type="text" name="year" id="year" placeholder="Year" required/>
           {renderErrorMessage('year')}
         </div>
         <div className={styles.formcontrol}>
-          <input type="number" name="price" id="price" min="0" placeholder="0" required />
+          <input type="number" name="price" id="price" min="0" placeholder="0" required/>
           {renderErrorMessage('price')}
         </div>
         <div className={styles.formcontrol}>
-          <input type="text" name="category" id="category" placeholder="Category" required />
+          <input type="text" name="category" id="category" placeholder="Category" required/>
           {renderErrorMessage('category')}
         </div>
         <div className={styles.formcontrol}>
-          <input type="text" name="plate" id="plate" placeholder="Plate" required />
+          <input type="text" name="plate" id="plate" placeholder="Plate" required/>
           {renderErrorMessage('plate')}
         </div>
         <div className={styles.formcontrol}>
-          <input type="text" name="locationName" id="locationName" placeholder="Location Name" required />
+          <input type="text" name="locationName" id="locationName" placeholder="Location Name" required/>
           {renderErrorMessage('locationName')}
         </div>
         <div className={styles.formcontrol}>
-          <input type="text" name="coordinates" id="coordinates" placeholder="Coordinates (e.g., 49.4285400, 32.0620700)" required />
+          <input type="text" name="coordinates" id="coordinates"
+                 placeholder="Coordinates (e.g., 49.4285400, 32.0620700)" required/>
           {renderErrorMessage('coordinates')}
         </div>
         <div className={styles.formcontrol}>
-          <input type="file" name="image" id="image" required />
+          <input type="file" name="image" id="image" required/>
         </div>
       </form>
     </div>
@@ -130,7 +131,7 @@ const AddCar = () => {
   const handleAddMyCarClick = (event) => {
     event.preventDefault();
 
-    let { brand, model, year, price, category, plate, locationName, coordinates, image } =
+    let {brand, model, year, price, category, plate, locationName, coordinates, image} =
       document.forms[0];
     let isValidInputtedData = false;
 
@@ -215,7 +216,7 @@ const AddCar = () => {
         fetch('/src/assets/no-image.jpg')
           .then((response) => response.arrayBuffer())
           .then((arrayBuffer) =>
-            saveCarWithImage(new Blob([arrayBuffer], { type: 'image/jpeg' }))
+            saveCarWithImage(new Blob([arrayBuffer], {type: 'image/jpeg'}))
           )
           .catch((error) =>
             console.error('Error loading default image:', error)
@@ -235,7 +236,6 @@ const AddCar = () => {
     coordinates,
     image
   ) => {
-    const [latitude, longitude] = coordinates.split(',').map((coord) => parseFloat(coord.trim()));
     const carData = {
       brand: brand,
       model: model,
@@ -244,7 +244,7 @@ const AddCar = () => {
       idCategory: category,
       plate: plate,
       locationName: locationName,
-      coordinates: [latitude, longitude],
+      coordinates: coordinates,
       available: 1,
       idAdmin: admin.id,
       image: image,
@@ -261,12 +261,12 @@ const AddCar = () => {
 
   return (
     <div>
-      <Header />
+      <Header/>
       <div className={styles.center}>
         <h1>Add New Car</h1>
         {renderForm}
-        <Button onClick={handleAddMyCarClick} text={'Add'} />
-        <Button onClick={handleCancelClick} text={'Cancel'} />
+        <Button onClick={handleAddMyCarClick} text={'Add'}/>
+        <Button onClick={handleCancelClick} text={'Cancel'}/>
       </div>
     </div>
   );
